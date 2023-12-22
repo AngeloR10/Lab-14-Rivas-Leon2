@@ -1,0 +1,47 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Database2022.MainPage">
+
+    <StackLayout>
+        <Entry Placeholder="Enter Name" x:Name="txtName" HorizontalOptions="FillAndExpand"/>
+        <Entry Placeholder="Enter LastName" x:Name="txtLastName" HorizontalOptions="FillAndExpand"/>
+
+        <!-- DatePicker para Fecha -->
+        <DatePicker x:Name="datePickerFecha" Format="D"/>
+
+        <Entry Placeholder="Enter Curso" x:Name="txtCurso" HorizontalOptions="FillAndExpand"/>
+
+        <!-- Picker para Género -->
+        <Picker x:Name="pickerGenero" Title="Select Gender">
+            <Picker.Items>
+                <x:String>Hombre</x:String>
+                <x:String>Mujer</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Save" Clicked="Button_Clicked"/>
+            <Button Text="Show" Clicked="Button_Clicked_1"/>
+        </StackLayout>
+
+        <Entry Placeholder="Filter" x:Name="txtFilter" HorizontalOptions="FillAndExpand"/>
+        <Button Text="ShowByText" Clicked="Button_Clicked_2"/>
+
+        <ListView x:Name="lvPeople">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding FirstName}"></Label>
+                                <Label Text="{Binding LastName}"></Label>
+                            </StackLayout>
+                            <Label Text="{Binding Fecha, StringFormat='{0:dd/MM/yyyy}'}"></Label>
+                            <Label Text="{Binding Curso}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
